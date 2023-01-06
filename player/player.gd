@@ -7,6 +7,11 @@ extends CharacterBody3D
 @export var RIGHT_STICK_SENSITIVITY = 1.0
 
 @onready var camera = $Camera3D
+@onready var parentNode = self.get_parent()
+
+var cropsHeld: int = 1
+var totalCrops: int = 0
+var canDeposit: bool = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -59,3 +64,20 @@ func _input(event):
 		# clamp restricts the rotation to -/+90 degrees on top and bottom
 		# otherwise the movement would be weird
 		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
+	if Input.is_action_just_pressed("action") and canDeposit:
+		depositCrops()
+
+func depositCrops() -> void:
+	totalCrops += cropsHeld
+	cropsHeld = 0
+
+func _on_event_hitbox_area_entered(area):
+	if area.is_in_group("HARVESTBOX"):
+		parentNode.toggleDepositTooltip()
+		canDeposit = true
+
+
+func _on_event_hitbox_area_exited(area):
+	if area.is_in_group("HARVESTBOX"):
+		parentNode.toggleDepositTooltip()
+		canDeposit = false
