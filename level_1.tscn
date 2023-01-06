@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://b31oguwcjhqix"]
+
+[ext_resource type="PackedScene" uid="uid://c3yabqicq140k" path="res://player/player.tscn" id="1_wtv3g"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7vq62"]
+size = Vector2(20, 20)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_7oydl"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_efawt"]
+rayleigh_color = Color(0.301961, 0.403922, 0.6, 1)
+turbidity = 228.98
+
+[sub_resource type="Sky" id="Sky_wufsm"]
+sky_material = SubResource("PhysicalSkyMaterial_efawt")
+
+[sub_resource type="Environment" id="Environment_kgn7f"]
+background_mode = 2
+sky = SubResource("Sky_wufsm")
+
+[node name="Level1" type="Node3D"]
+
+[node name="Ground" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground/StaticBody3D"]
+mesh = SubResource("PlaneMesh_7vq62")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_7oydl")
+
+[node name="Player" parent="." instance=ExtResource("1_wtv3g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10962, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kgn7f")
