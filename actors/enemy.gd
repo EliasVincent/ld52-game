@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var MOVE_SPEED = 100.0
+@export var MOVE_SPEED = 10.0
 @export var ROTATION_SPEED = 50.0
 @export var DAMAGE = 1.0
 @export var ATTACK_RATE = 0.5
@@ -38,7 +38,6 @@ func init():
 	attackTimer.one_shot = true
 #	healthBar.update(healthManager.current_health, healthManager.max_health)
 #	healthManager.connect("dead", self, "set_state_dead")
-
 	set_state_idle()
 
 
@@ -82,14 +81,14 @@ func process_state_chase(delta):
 		if playerBody != null:
 			set_state_attack()
 	
-	nav.target_location = player.global_position
-	var target = nav.get_next_location()
+	nav.set_target_location(player.position) # das stimmt
+	var target = nav.get_final_location()
 	#var v = (target - player.global_position).normalized()
 	#nav.set_velocity(v)
 	var goal_pos = target
 	var dir = goal_pos - global_transform.origin
-	dir.y = 0
-	velocity = dir
+	#dir.y = 0
+	velocity = dir * delta * MOVE_SPEED
 	
 	
 	var angle = atan2(dir.x, dir.z)
@@ -155,9 +154,10 @@ func _on_attack_timer_timeout():
 
 func _on_s_damage_area_body_entered(body):
 	isInArea = true
-	if body.is_in_group("player"):
+	if body.is_in_group("PLAYER"):
 		playerBody = body
 		if can_attack:
+			print("set state to attack")
 			set_state_attack()
 
 func _on_s_damage_area_body_exited(body):
@@ -179,9 +179,7 @@ func _on_los_area_body_exited(body):
 
 
 func _on_hurt_hitbox_area_entered(area):
-	print(area)
 	if area.is_in_group("SPRAY"):
-		print("in spray")
 		inSpray = true
 
 

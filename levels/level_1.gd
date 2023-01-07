@@ -5,6 +5,8 @@ extends Node3D
 @onready var cropsHeld: RichTextLabel = %CropsHeld
 @onready var harvest_tooltip = %HarvestTooltip
 @onready var harvesting = %Harvesting
+@onready var level_countdown: Timer = $LevelCountdown
+@onready var time_text = %TimeText
 
 
 @onready var player: CharacterBody3D = $Player
@@ -34,8 +36,11 @@ func harvestingDisabled():
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	cropsSaved.text = str("Crops saved: " , Globals.totalCrops)
 	cropsHeld.text = str("Crops held: " , Globals.cropsHeld)
+	time_text.text = str(snapped(level_countdown.time_left, 1))
+
+
+func _on_level_countdown_timeout():
+	pass # GAME OVER
