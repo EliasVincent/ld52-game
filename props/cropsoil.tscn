@@ -50,6 +50,22 @@ data = PackedVector3Array(-1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_ry4bx"]
 size = Vector3(3, 0.45, 3)
 
+[sub_resource type="Animation" id="Animation_ovwtm"]
+resource_name = "HARVESTING"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("catcrop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.2198, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_jiowc"]
 resource_name = "IDLE"
 length = 2.0
@@ -106,22 +122,6 @@ tracks/1/keys = {
 "values": [Vector3(0, 1.5708, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_ovwtm"]
-resource_name = "HARVESTING"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("catcrop:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.2198, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mq6et"]
 _data = {
 "HARVESTING": SubResource("Animation_ovwtm"),
@@ -148,7 +148,7 @@ shape = SubResource("ConcavePolygonShape3D_tvwdm")
 shape = SubResource("BoxShape3D_ry4bx")
 
 [node name="catcrop" parent="." instance=ExtResource("3_ubbep")]
-transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.672, 0, -0.5, 0, -2.18557e-08, 0, 0, 0)
+transform = Transform3D(-1.81e-06, 0, 0.5, 0, 0.672, 0, -0.5, 0, -1.81e-06, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "IDLE"

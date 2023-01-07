@@ -11,8 +11,6 @@ extends CharacterBody3D
 
 @onready var harvestTimer = $HarvestTimer
 
-var cropsHeld: int = 1
-var totalCrops: int = 0
 var canDeposit: bool = false
 var canHarvest: bool = false
 var canAttack: bool = true
@@ -71,8 +69,8 @@ func _input(event):
 		beginHarvest(boxToHarvest)
 
 func depositCrops() -> void:
-	totalCrops += cropsHeld
-	cropsHeld = 0
+	Globals.totalCrops += Globals.cropsHeld
+	Globals.cropsHeld = 0
 
 func beginHarvest(boxToHarvest) -> void:
 	boxToHarvest.harvestAnim()
@@ -81,7 +79,7 @@ func beginHarvest(boxToHarvest) -> void:
 func harvest(boxToHarvest) -> void:
 	boxToHarvest.setToHarvested()
 	parentNode.harvestingDisabled()
-	cropsHeld += 1
+	Globals.cropsHeld += 1
 
 func hurt(DAMAGE, Vector3):
 	print("PLAYER GOT HURT", DAMAGE)

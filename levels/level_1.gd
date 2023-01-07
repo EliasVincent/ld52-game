@@ -37,5 +37,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	cropsSaved.text = str("Crops saved: " , player.totalCrops)
-	cropsHeld.text = str("Crops held: " , player.cropsHeld)
+	cropsSaved.text = str("Crops saved: " , Globals.totalCrops)
+	cropsHeld.text = str("Crops held: " , Globals.cropsHeld)
