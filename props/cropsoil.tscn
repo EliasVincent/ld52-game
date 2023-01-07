@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbotwqirenqxq"]
+[gd_scene load_steps=13 format=3 uid="uid://bbotwqirenqxq"]
 
+[ext_resource type="Script" path="res://props/cropsoil.gd" id="1_2d1qs"]
 [ext_resource type="Texture2D" uid="uid://fyn16ptqn726" path="res://assets/sourcefiles/blender/Cube.001 Displacement.png" id="1_10eg1"]
+[ext_resource type="PackedScene" uid="uid://by7mbnf6jbo4s" path="res://assets/props/catcropMesh.tscn" id="3_ubbep"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uutjc"]
 resource_name = "Material.001"
@@ -48,7 +50,88 @@ data = PackedVector3Array(-1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_ry4bx"]
 size = Vector3(3, 0.45, 3)
 
+[sub_resource type="Animation" id="Animation_jiowc"]
+resource_name = "IDLE"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("catcrop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.347352, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("catcrop:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 1.91986, 0), Vector3(0, 1.22173, 0), Vector3(0, 1.91986, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0ccav"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("catcrop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("catcrop:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ovwtm"]
+resource_name = "HARVESTING"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("catcrop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.2198, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mq6et"]
+_data = {
+"HARVESTING": SubResource("Animation_ovwtm"),
+"IDLE": SubResource("Animation_jiowc"),
+"RESET": SubResource("Animation_0ccav")
+}
+
 [node name="cropsoil" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.55, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_2d1qs")
 
 [node name="Cube001" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 0.2, 0, 0, 0, 1.5, 0, 0, 0)
@@ -63,3 +146,12 @@ shape = SubResource("ConcavePolygonShape3D_tvwdm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_ry4bx")
+
+[node name="catcrop" parent="." instance=ExtResource("3_ubbep")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.672, 0, -0.5, 0, -2.18557e-08, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "IDLE"
+libraries = {
+"": SubResource("AnimationLibrary_mq6et")
+}

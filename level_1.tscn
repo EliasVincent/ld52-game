@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b31oguwcjhqix"]
+[gd_scene load_steps=10 format=3 uid="uid://dh2amoaopwvia"]
 
 [ext_resource type="Script" path="res://levels/level_1.gd" id="1_gln08"]
 [ext_resource type="PackedScene" uid="uid://c3yabqicq140k" path="res://player/player.tscn" id="1_wtv3g"]
 [ext_resource type="PackedScene" uid="uid://slodq1ng6vky" path="res://actors/harvest_box.tscn" id="2_c8non"]
-[ext_resource type="PackedScene" uid="uid://bbotwqirenqxq" path="res://assets/props/cropsoil.tscn" id="3_ksn5q"]
+[ext_resource type="PackedScene" uid="uid://bbotwqirenqxq" path="res://props/cropsoil.tscn" id="3_ksn5q"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7vq62"]
 size = Vector2(100, 200)
@@ -98,10 +98,10 @@ offset_bottom = 239.0
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
-offset_left = 43.0
-offset_top = 29.0
-offset_right = 286.0
-offset_bottom = 74.0
+offset_left = 38.0
+offset_top = 179.0
+offset_right = 279.655
+offset_bottom = 224.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tooltips/DepositTooltip"]
 layout_mode = 0
@@ -110,6 +110,40 @@ offset_top = 10.0
 offset_right = 435.0
 offset_bottom = 93.0
 text = "PRESS E TO DEPOSIT CROPS"
+
+[node name="HarvestTooltip" type="Panel" parent="Tooltips"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 38.0
+offset_top = 179.0
+offset_right = 279.655
+offset_bottom = 224.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tooltips/HarvestTooltip"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 10.0
+offset_right = 435.0
+offset_bottom = 93.0
+text = "PRESS E TO HARVEST CROP"
+
+[node name="Harvesting" type="Panel" parent="Tooltips"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 38.0
+offset_top = 178.0
+offset_right = 279.655
+offset_bottom = 223.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tooltips/Harvesting"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 10.0
+offset_right = 435.0
+offset_bottom = 93.0
+text = "			HARVESTING..."
 
 [node name="HUD" type="Control" parent="."]
 custom_minimum_size = Vector2(320, 240)

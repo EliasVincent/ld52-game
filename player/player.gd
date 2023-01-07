@@ -65,14 +65,22 @@ func _input(event):
 		depositCrops()
 	if Input.is_action_just_pressed("action") and canHarvest:
 		canHarvest = false
-		harvest(boxToHarvest)
+		parentNode.harvestingEnabled()
+		parentNode.harvestTooltipDisabled()
+		beginHarvest(boxToHarvest)
 
 func depositCrops() -> void:
 	totalCrops += cropsHeld
 	cropsHeld = 0
 
-func harvest(boxToHarvest) -> void:
+func beginHarvest(boxToHarvest) -> void:
+	boxToHarvest.harvestAnim()
 	harvestTimer.start()
+
+func harvest(boxToHarvest) -> void:
+	boxToHarvest.setToHarvested()
+	parentNode.harvestingDisabled()
+	cropsHeld += 1
 
 func _on_event_hitbox_area_entered(area):
 	if area.is_in_group("HARVESTBOX"):
@@ -81,6 +89,7 @@ func _on_event_hitbox_area_entered(area):
 	if area.is_in_group("CROPSOIL"):
 		canHarvest = true
 		boxToHarvest = area.get_parent()
+		parentNode.harvestTooltipEnabled()
 
 
 func _on_event_hitbox_area_exited(area):
@@ -89,8 +98,12 @@ func _on_event_hitbox_area_exited(area):
 		canDeposit = false
 	if area.is_in_group("CROPSOIL"):
 		canHarvest = false
+		harvestTimer.stop()
 		boxToHarvest = area.get_parent()
+		parentNode.harvestTooltipDisabled()
+		parentNode.harvestingDisabled()
 
 
 func _on_harvest_timer_timeout():
 	print("harvest timeout")
+	harvest(boxToHarvest)
