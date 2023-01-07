@@ -7,7 +7,7 @@ extends CharacterBody3D
 @export var RIGHT_STICK_SENSITIVITY = 1.0
 
 @onready var camera = $Camera3D
-@onready var parentNode = self.get_parent()
+@onready var parentNode = get_tree().get_nodes_in_group("LEVEL")[0]
 
 @onready var harvestTimer = $HarvestTimer
 
