@@ -15,6 +15,7 @@ var cropsHeld: int = 1
 var totalCrops: int = 0
 var canDeposit: bool = false
 var canHarvest: bool = false
+var canAttack: bool = true
 
 var boxToHarvest
 
@@ -81,6 +82,9 @@ func harvest(boxToHarvest) -> void:
 	boxToHarvest.setToHarvested()
 	parentNode.harvestingDisabled()
 	cropsHeld += 1
+
+func hurt(DAMAGE, Vector3):
+	print("PLAYER GOT HURT", DAMAGE)
 
 func _on_event_hitbox_area_entered(area):
 	if area.is_in_group("HARVESTBOX"):

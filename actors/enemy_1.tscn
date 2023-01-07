@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://bw0jwgfd4dcxi"]
+
+[ext_resource type="Script" path="res://actors/enemy.gd" id="1_ai268"]
+[ext_resource type="PackedScene" uid="uid://d3tlg4ke165qs" path="res://assets/enemies/enemy_1Mesh.tscn" id="1_n6e87"]
+[ext_resource type="Script" path="res://actors/CharacterMover.gd" id="3_355e3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rqgrn"]
+height = 1.8028
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oolhf"]
+height = 1.8028
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_druyv"]
+height = 1.4789
+radius = 7.96075
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ovpd8"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.109804)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_176sl"]
+material = SubResource("StandardMaterial3D_ovpd8")
+top_radius = 8.0
+bottom_radius = 8.0
+
+[node name="Enemy1" type="CharacterBody3D" groups=["ENEMY"]]
+script = ExtResource("1_ai268")
+
+[node name="enemy1" parent="." instance=ExtResource("1_n6e87")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.224451)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.808255, 0)
+shape = SubResource("CapsuleShape3D_rqgrn")
+
+[node name="SDamageArea" type="Area3D" parent="." groups=["ENEMYHITBOX"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SDamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.808255, 0.344018)
+shape = SubResource("CapsuleShape3D_oolhf")
+
+[node name="LOSArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LOSArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.775849, 0)
+shape = SubResource("CylinderShape3D_druyv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LOSArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04404, 0)
+mesh = SubResource("CylinderMesh_176sl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="CharacterMover" type="Node3D" parent="."]
+script = ExtResource("3_355e3")
+
+[node name="ChaseTimer" type="Timer" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[node name="SFX" type="Node3D" parent="."]
+
+[connection signal="body_entered" from="SDamageArea" to="." method="_on_s_damage_area_body_entered"]
+[connection signal="body_exited" from="SDamageArea" to="." method="_on_s_damage_area_body_exited"]
+[connection signal="body_entered" from="LOSArea" to="." method="_on_los_area_body_entered"]
+[connection signal="body_exited" from="LOSArea" to="." method="_on_los_area_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

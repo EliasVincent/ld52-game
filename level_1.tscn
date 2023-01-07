@@ -169,3 +169,5 @@ offset_top = 33.0
 offset_right = 325.0
 offset_bottom = 77.0
 text = "Crops Held: "
+
+[node name="Node3D" type="NavigationAgent3D" parent="."]
