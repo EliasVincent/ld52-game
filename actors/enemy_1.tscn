@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bw0jwgfd4dcxi"]
+[gd_scene load_steps=12 format=3 uid="uid://bw0jwgfd4dcxi"]
 
 [ext_resource type="Script" path="res://actors/enemy.gd" id="1_ai268"]
 [ext_resource type="PackedScene" uid="uid://d3tlg4ke165qs" path="res://assets/enemies/enemy_1Mesh.tscn" id="1_n6e87"]
@@ -22,6 +22,32 @@ albedo_color = Color(1, 1, 1, 0.109804)
 material = SubResource("StandardMaterial3D_ovpd8")
 top_radius = 8.0
 bottom_radius = 8.0
+
+[sub_resource type="Animation" id="Animation_mc2ru"]
+resource_name = "DIE"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fqtyr"]
+_data = {
+"DIE": SubResource("Animation_mc2ru")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ugimu"]
+radius = 0.563874
+height = 1.9115
 
 [node name="Enemy1" type="CharacterBody3D" groups=["ENEMY"]]
 script = ExtResource("1_ai268")
@@ -50,6 +76,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04404, 0)
 mesh = SubResource("CylinderMesh_176sl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fqtyr")
+}
 
 [node name="CharacterMover" type="Node3D" parent="."]
 script = ExtResource("3_355e3")
@@ -60,8 +89,16 @@ script = ExtResource("3_355e3")
 
 [node name="SFX" type="Node3D" parent="."]
 
+[node name="HurtHitbox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtHitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.808255, 0)
+shape = SubResource("CapsuleShape3D_ugimu")
+
 [connection signal="body_entered" from="SDamageArea" to="." method="_on_s_damage_area_body_entered"]
 [connection signal="body_exited" from="SDamageArea" to="." method="_on_s_damage_area_body_exited"]
 [connection signal="body_entered" from="LOSArea" to="." method="_on_los_area_body_entered"]
 [connection signal="body_exited" from="LOSArea" to="." method="_on_los_area_body_exited"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="area_entered" from="HurtHitbox" to="." method="_on_hurt_hitbox_area_entered"]
+[connection signal="area_exited" from="HurtHitbox" to="." method="_on_hurt_hitbox_area_exited"]

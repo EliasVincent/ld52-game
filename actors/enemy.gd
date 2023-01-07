@@ -21,6 +21,7 @@ var frozen = false
 var isInArea = false
 var playerBody: CharacterBody3D
 var playerInAreaAndLOS = false
+var inSpray = false
 
 var path: NodePath
 var path_node = 0
@@ -53,6 +54,10 @@ func _physics_process(delta):
 			process_state_attack(delta, playerBody)
 		STATES.DEAD:
 			process_state_dead(delta)
+	
+	if inSpray:
+		if player.isSpraying == true:
+			hurt()
 
 # SET states
 func set_state_idle():
@@ -136,7 +141,7 @@ func process_state_dead(delta):
 	pass
 
 
-func hurt(damage: int, dir: Vector3):
+func hurt():
 	#hurt_sound_1.play(0.0)
 	#healthManager.hurt(damage, dir)
 	animationPlayer.play("DIE")
@@ -170,3 +175,16 @@ func _on_los_area_body_exited(body):
 	if body == player:
 		playerInAreaAndLOS = false
 		set_state_idle()
+
+
+
+func _on_hurt_hitbox_area_entered(area):
+	print(area)
+	if area.is_in_group("SPRAY"):
+		print("in spray")
+		inSpray = true
+
+
+func _on_hurt_hitbox_area_exited(area):
+	if area.is_in_group("SPRAY"):
+		inSpray = false

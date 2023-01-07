@@ -8,12 +8,19 @@ extends CharacterBody3D
 
 @onready var camera = $Camera3D
 @onready var parentNode = get_tree().get_nodes_in_group("LEVEL")[0]
-
+@onready var spray_particles = %SprayParticles
 @onready var harvestTimer = $HarvestTimer
+@onready var spray_time = $SprayTime
+@onready var spray_cooldown = $SprayCooldown
+@onready var spray_1_sound = %Spray1Sound
+
+
 
 var canDeposit: bool = false
 var canHarvest: bool = false
 var canAttack: bool = true
+var canSpray: bool = true
+var isSpraying: bool = false
 
 var boxToHarvest
 
@@ -67,6 +74,12 @@ func _input(event):
 		parentNode.harvestingEnabled()
 		parentNode.harvestTooltipDisabled()
 		beginHarvest(boxToHarvest)
+	
+	if Input.is_action_just_pressed("shoot") and canSpray and Globals.sprayAmmo > 0:
+		canSpray = false
+		isSpraying = true
+		Globals.sprayAmmo -= 1
+		spray()
 
 func depositCrops() -> void:
 	Globals.totalCrops += Globals.cropsHeld
@@ -83,6 +96,13 @@ func harvest(boxToHarvest) -> void:
 
 func hurt(DAMAGE, Vector3):
 	print("PLAYER GOT HURT", DAMAGE)
+
+func spray():
+	print("spraying")
+	spray_time.start()
+	spray_particles.emitting = false
+	spray_particles.emitting = true
+	spray_1_sound.play()
 
 func _on_event_hitbox_area_entered(area):
 	if area.is_in_group("HARVESTBOX"):
@@ -109,3 +129,20 @@ func _on_event_hitbox_area_exited(area):
 func _on_harvest_timer_timeout():
 	print("harvest timeout")
 	harvest(boxToHarvest)
+
+
+func _on_spray_time_timeout():
+	isSpraying = false
+	spray_cooldown.start()
+
+
+func _on_spray_cooldown_timeout():
+	canSpray = true
+
+
+func _on_spray_hit_box_body_entered(body):
+	pass
+
+
+func _on_spray_hit_box_body_exited(body):
+	pass # Replace with function body.

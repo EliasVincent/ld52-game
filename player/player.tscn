@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3yabqicq140k"]
+[gd_scene load_steps=15 format=3 uid="uid://c3yabqicq140k"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_7qt43"]
+[ext_resource type="AudioStream" uid="uid://bc607o8ubcs8w" path="res://assets/sfx/spray1.wav" id="2_moqj4"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3g6gf"]
 radius = 0.4
@@ -11,6 +12,45 @@ radius = 0.4
 height = 1.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nr8dk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rsd2w"]
+radius = 0.827765
+
+[sub_resource type="Gradient" id="Gradient_maqam"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jedii"]
+gradient = SubResource("Gradient_maqam")
+
+[sub_resource type="Gradient" id="Gradient_kekjh"]
+offsets = PackedFloat32Array(0, 0.995283)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_411vy"]
+gradient = SubResource("Gradient_kekjh")
+
+[sub_resource type="Curve" id="Curve_0snnf"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0.0255319, 98.1818), 0.0, 0.0, 0, 0, Vector2(0.987234, -29.0909), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fuxxm"]
+curve = SubResource("Curve_0snnf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6bjyx"]
+lifetime_randomness = 0.46
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 0, -1)
+spread = 32.09
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+linear_accel_curve = SubResource("CurveTexture_fuxxm")
+scale_min = 0.1
+scale_max = 0.5
+color_ramp = SubResource("GradientTexture1D_411vy")
+color_initial_ramp = SubResource("GradientTexture1D_jedii")
+
+[sub_resource type="SphereMesh" id="SphereMesh_ofmph"]
 
 [node name="Player" type="CharacterBody3D" groups=["PLAYER"]]
 script = ExtResource("1_7qt43")
@@ -36,6 +76,42 @@ shape = SubResource("CapsuleShape3D_nr8dk")
 wait_time = 2.5
 one_shot = true
 
+[node name="Weapon" type="Node3D" parent="."]
+
+[node name="SprayHitBox" type="Area3D" parent="Weapon" groups=["SPRAY"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon/SprayHitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38863, -1.34397)
+shape = SubResource("SphereShape3D_rsd2w")
+
+[node name="SprayParticles" type="GPUParticles3D" parent="Weapon"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.540502, -1.07872)
+emitting = false
+amount = 21
+lifetime = 1.18
+one_shot = true
+explosiveness = 0.62
+process_material = SubResource("ParticleProcessMaterial_6bjyx")
+draw_pass_1 = SubResource("SphereMesh_ofmph")
+
+[node name="SprayTime" type="Timer" parent="."]
+one_shot = true
+
+[node name="SprayCooldown" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="SFX" type="Node3D" parent="."]
+
+[node name="Spray1Sound" type="AudioStreamPlayer" parent="SFX"]
+unique_name_in_owner = true
+stream = ExtResource("2_moqj4")
+
 [connection signal="area_entered" from="EventHitbox" to="." method="_on_event_hitbox_area_entered"]
 [connection signal="area_exited" from="EventHitbox" to="." method="_on_event_hitbox_area_exited"]
 [connection signal="timeout" from="HarvestTimer" to="." method="_on_harvest_timer_timeout"]
+[connection signal="body_entered" from="Weapon/SprayHitBox" to="." method="_on_spray_hit_box_body_entered"]
+[connection signal="body_exited" from="Weapon/SprayHitBox" to="." method="_on_spray_hit_box_body_exited"]
+[connection signal="timeout" from="SprayTime" to="." method="_on_spray_time_timeout"]
+[connection signal="timeout" from="SprayCooldown" to="." method="_on_spray_cooldown_timeout"]
