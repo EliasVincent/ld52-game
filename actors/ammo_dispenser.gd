@@ -18,7 +18,7 @@ func _on_dispense_area_body_entered(body):
 	if body.is_in_group("PLAYER") and canDispense:
 		canDispense = false
 		Globals.sprayAmmo += AmmoToDispense
-		
+		print("RELOADED", Globals.sprayAmmo)
 
 
 func _on_dispenser_cooldown_timeout():

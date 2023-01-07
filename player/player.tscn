@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://c3yabqicq140k"]
+[gd_scene load_steps=16 format=3 uid="uid://c3yabqicq140k"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_7qt43"]
 [ext_resource type="AudioStream" uid="uid://bc607o8ubcs8w" path="res://assets/sfx/spray1.wav" id="2_moqj4"]
+[ext_resource type="PackedScene" uid="uid://cv85da7f35ssv" path="res://player/spraycan.tscn" id="2_vtiwb"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3g6gf"]
 radius = 0.4
@@ -94,6 +95,8 @@ one_shot = true
 explosiveness = 0.62
 process_material = SubResource("ParticleProcessMaterial_6bjyx")
 draw_pass_1 = SubResource("SphereMesh_ofmph")
+
+[node name="spraycan" parent="Weapon" instance=ExtResource("2_vtiwb")]
 
 [node name="SprayTime" type="Timer" parent="."]
 one_shot = true
