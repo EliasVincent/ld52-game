@@ -102,6 +102,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10962, 0)
 [node name="Enemy1" parent="Navigation" instance=ExtResource("4_05sir")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 
+[node name="Enemy2" parent="Navigation" instance=ExtResource("4_05sir")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 13)
+
+[node name="Enemy3" parent="Navigation" instance=ExtResource("4_05sir")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 22)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kgn7f")
 
