@@ -32,5 +32,10 @@ fov = 80.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EventHitbox"]
 shape = SubResource("CapsuleShape3D_nr8dk")
 
+[node name="HarvestTimer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
 [connection signal="area_entered" from="EventHitbox" to="." method="_on_event_hitbox_area_entered"]
 [connection signal="area_exited" from="EventHitbox" to="." method="_on_event_hitbox_area_exited"]
+[connection signal="timeout" from="HarvestTimer" to="." method="_on_harvest_timer_timeout"]

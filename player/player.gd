@@ -9,9 +9,14 @@ extends CharacterBody3D
 @onready var camera = $Camera3D
 @onready var parentNode = self.get_parent()
 
+@onready var harvestTimer = $HarvestTimer
+
 var cropsHeld: int = 1
 var totalCrops: int = 0
 var canDeposit: bool = false
+var canHarvest: bool = false
+
+var boxToHarvest
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -50,34 +55,42 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-# func input is called every time *any* input happens
+
 func _input(event):
-	# MOUSE INPUT
 	if event is InputEventMouseMotion:
-		# get rotation degrees of the Player
-		# relative means how much the mouse has moved along x axis,
-		# multiplying that by our sensitivity and applying that to the rotation of the player
-		# as a result this will turn the player left and right
 		rotation_degrees.y -= MOUSE_SENSITIVITY * event.relative.x
-		# now the same thing for the camera
 		camera.rotation_degrees.x -= MOUSE_SENSITIVITY * event.relative.y
-		# clamp restricts the rotation to -/+90 degrees on top and bottom
-		# otherwise the movement would be weird
 		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
 	if Input.is_action_just_pressed("action") and canDeposit:
 		depositCrops()
+	if Input.is_action_just_pressed("action") and canHarvest:
+		canHarvest = false
+		harvest(boxToHarvest)
 
 func depositCrops() -> void:
 	totalCrops += cropsHeld
 	cropsHeld = 0
 
+func harvest(boxToHarvest) -> void:
+	harvestTimer.start()
+
 func _on_event_hitbox_area_entered(area):
 	if area.is_in_group("HARVESTBOX"):
 		parentNode.toggleDepositTooltip()
 		canDeposit = true
+	if area.is_in_group("CROPSOIL"):
+		canHarvest = true
+		boxToHarvest = area.get_parent()
 
 
 func _on_event_hitbox_area_exited(area):
 	if area.is_in_group("HARVESTBOX"):
 		parentNode.toggleDepositTooltip()
 		canDeposit = false
+	if area.is_in_group("CROPSOIL"):
+		canHarvest = false
+		boxToHarvest = area.get_parent()
+
+
+func _on_harvest_timer_timeout():
+	print("harvest timeout")

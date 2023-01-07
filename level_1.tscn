@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://b31oguwcjhqix"]
+[gd_scene load_steps=10 format=3 uid="uid://b31oguwcjhqix"]
 
 [ext_resource type="Script" path="res://levels/level_1.gd" id="1_gln08"]
 [ext_resource type="PackedScene" uid="uid://c3yabqicq140k" path="res://player/player.tscn" id="1_wtv3g"]
 [ext_resource type="PackedScene" uid="uid://slodq1ng6vky" path="res://actors/harvest_box.tscn" id="2_c8non"]
+[ext_resource type="PackedScene" uid="uid://bbotwqirenqxq" path="res://assets/props/cropsoil.tscn" id="3_ksn5q"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7vq62"]
-size = Vector2(20, 20)
+size = Vector2(100, 200)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_7oydl"]
 
@@ -67,6 +68,20 @@ size = Vector3(1, 2, 1)
 [node name="CSGBox3D5" type="CSGBox3D" parent="Terrain/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -6)
 size = Vector3(1, 2, 1)
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="cropsoil" parent="Props" instance=ExtResource("3_ksn5q")]
+transform = Transform3D(1, 0, 0, 0, 0.55, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="cropsoil2" parent="Props" instance=ExtResource("3_ksn5q")]
+transform = Transform3D(1, 0, 0, 0, 0.55, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="cropsoil3" parent="Props" instance=ExtResource("3_ksn5q")]
+transform = Transform3D(1, 0, 0, 0, 0.55, 0, 0, 0, 1, 10, 0, 4)
+
+[node name="cropsoil4" parent="Props" instance=ExtResource("3_ksn5q")]
+transform = Transform3D(1, 0, 0, 0, 0.55, 0, 0, 0, 1, 6, 0, 4)
 
 [node name="HarvestBox" parent="." instance=ExtResource("2_c8non")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 8)
