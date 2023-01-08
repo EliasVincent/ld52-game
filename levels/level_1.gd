@@ -56,7 +56,7 @@ func _process(delta):
 	time_text.text = str(snapped(level_countdown.time_left, 1))
 	ammo.text = str("Ammo: ", Globals.sprayAmmo)
 	
-	if Globals.totalCrops == Globals.cropsToCollect:
+	if Globals.totalCrops >= Globals.cropsToCollect:
 		get_tree().change_scene_to_file("res://ui/win_screen.tscn")
 	
 	if Globals.sprayAmmo <= 0:

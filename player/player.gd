@@ -15,6 +15,9 @@ extends CharacterBody3D
 @onready var spray_1_sound = %Spray1Sound
 @onready var animation_player = $AnimationPlayer
 @onready var player_hurt = %PlayerHurt
+@onready var harvesting_sound = %HarvestingSound
+@onready var harvest_success = %HarvestSuccess
+@onready var deposit_sound = %DepositSound
 
 
 
@@ -74,7 +77,7 @@ func _input(event):
 		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
 	if Input.is_action_just_pressed("action") and canDeposit:
 		depositCrops()
-	if Input.is_action_just_pressed("action") and canHarvest:
+	if Input.is_action_just_pressed("action") and canHarvest and boxToHarvest.canBeHarvested == true:
 		canHarvest = false
 		parentNode.harvestingEnabled()
 		parentNode.harvestTooltipDisabled()
@@ -89,14 +92,17 @@ func _input(event):
 func depositCrops() -> void:
 	Globals.totalCrops += Globals.cropsHeld
 	Globals.cropsHeld = 0
+	deposit_sound.play()
 
 func beginHarvest(boxToHarvest) -> void:
 	boxToHarvest.harvestAnim()
+	harvesting_sound.play()
 	harvestTimer.start()
 
 func harvest(boxToHarvest) -> void:
 	boxToHarvest.setToHarvested()
 	parentNode.harvestingDisabled()
+	harvest_success.play()
 	Globals.cropsHeld += 1
 
 func hurt(DAMAGE, Vector3):

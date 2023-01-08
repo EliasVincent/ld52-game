@@ -21,3 +21,4 @@ func harvestAnim():
 
 func setToHarvested():
 	catcrop.visible = false
+	canBeHarvested = false

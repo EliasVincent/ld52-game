@@ -1,9 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://c3yabqicq140k"]
+[gd_scene load_steps=21 format=3 uid="uid://c3yabqicq140k"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_7qt43"]
 [ext_resource type="AudioStream" uid="uid://bc607o8ubcs8w" path="res://assets/sfx/spray1.wav" id="2_moqj4"]
 [ext_resource type="PackedScene" uid="uid://cv85da7f35ssv" path="res://player/spraycan.tscn" id="2_vtiwb"]
 [ext_resource type="AudioStream" uid="uid://bv8dia5urlr1v" path="res://assets/sfx/punch-hurt-1.wav" id="4_md8ia"]
+[ext_resource type="AudioStream" uid="uid://d4fjioy1jrci1" path="res://assets/sfx/cute-3.wav" id="5_6bmv0"]
+[ext_resource type="AudioStream" uid="uid://bnha1l7d3nmw6" path="res://assets/sfx/cute-1.wav" id="6_eijst"]
+[ext_resource type="AudioStream" uid="uid://cdqtqyvuc18b8" path="res://assets/sfx/offload-success-1.wav" id="7_tone6"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3g6gf"]
 radius = 0.4
@@ -148,6 +151,21 @@ stream = ExtResource("2_moqj4")
 unique_name_in_owner = true
 stream = ExtResource("4_md8ia")
 volume_db = -6.5
+
+[node name="HarvestingSound" type="AudioStreamPlayer" parent="SFX"]
+unique_name_in_owner = true
+stream = ExtResource("5_6bmv0")
+volume_db = -5.032
+
+[node name="HarvestSuccess" type="AudioStreamPlayer" parent="SFX"]
+unique_name_in_owner = true
+stream = ExtResource("6_eijst")
+volume_db = -6.151
+
+[node name="DepositSound" type="AudioStreamPlayer" parent="SFX"]
+unique_name_in_owner = true
+stream = ExtResource("7_tone6")
+volume_db = -5.592
 
 [connection signal="body_entered" from="Camera3D/Weapon/SprayHitBox" to="." method="_on_spray_hit_box_body_entered"]
 [connection signal="body_exited" from="Camera3D/Weapon/SprayHitBox" to="." method="_on_spray_hit_box_body_exited"]
