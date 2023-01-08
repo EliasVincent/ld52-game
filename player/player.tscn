@@ -136,6 +136,10 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
+[node name="DamageCooldown" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_04xan")
@@ -160,7 +164,7 @@ volume_db = -5.032
 [node name="HarvestSuccess" type="AudioStreamPlayer" parent="SFX"]
 unique_name_in_owner = true
 stream = ExtResource("6_eijst")
-volume_db = -6.151
+volume_db = -8.387
 
 [node name="DepositSound" type="AudioStreamPlayer" parent="SFX"]
 unique_name_in_owner = true
@@ -174,3 +178,4 @@ volume_db = -5.592
 [connection signal="timeout" from="HarvestTimer" to="." method="_on_harvest_timer_timeout"]
 [connection signal="timeout" from="SprayTime" to="." method="_on_spray_time_timeout"]
 [connection signal="timeout" from="SprayCooldown" to="." method="_on_spray_cooldown_timeout"]
+[connection signal="timeout" from="DamageCooldown" to="." method="_on_damage_cooldown_timeout"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bbotwqirenqxq"]
+[gd_scene load_steps=14 format=3 uid="uid://bbotwqirenqxq"]
 
 [ext_resource type="Script" path="res://props/cropsoil.gd" id="1_2d1qs"]
 [ext_resource type="Texture2D" uid="uid://fyn16ptqn726" path="res://assets/sourcefiles/blender/Cube.001 Displacement.png" id="1_10eg1"]
 [ext_resource type="PackedScene" uid="uid://by7mbnf6jbo4s" path="res://assets/props/catcropMesh.tscn" id="3_ubbep"]
+[ext_resource type="PackedScene" uid="uid://dluh3nw6smie" path="res://props/foliage_1.tscn" id="4_fb4n5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uutjc"]
 resource_name = "Material.001"
@@ -155,3 +156,27 @@ autoplay = "IDLE"
 libraries = {
 "": SubResource("AnimationLibrary_mq6et")
 }
+
+[node name="Foliage1" parent="." instance=ExtResource("4_fb4n5")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.837881, 0.0229414, 0.994733)
+
+[node name="Foliage8" parent="." instance=ExtResource("4_fb4n5")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.0249994, 0.0229414, 0.994733)
+
+[node name="Foliage2" parent="." instance=ExtResource("4_fb4n5")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.837881, 0.0229414, 0.0814819)
+
+[node name="Foliage3" parent="." instance=ExtResource("4_fb4n5")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.837881, 0.0229414, -0.765336)
+
+[node name="Foliage4" parent="." instance=ExtResource("4_fb4n5")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.887149, 0.0229414, 0.994733)
+
+[node name="Foliage5" parent="." instance=ExtResource("4_fb4n5")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.887149, 0.0229414, 0.0814819)
+
+[node name="Foliage6" parent="." instance=ExtResource("4_fb4n5")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.887149, 0.0229414, -0.765336)
+
+[node name="Foliage7" parent="." instance=ExtResource("4_fb4n5")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0903577, 0.0229414, -0.765336)

@@ -18,6 +18,7 @@ extends CharacterBody3D
 @onready var harvesting_sound = %HarvestingSound
 @onready var harvest_success = %HarvestSuccess
 @onready var deposit_sound = %DepositSound
+@onready var damage_cooldown = $DamageCooldown
 
 
 
@@ -26,6 +27,7 @@ var canHarvest: bool = false
 var canAttack: bool = true
 var canSpray: bool = true
 var isSpraying: bool = false
+var canBeHurt: bool = true
 
 var boxToHarvest
 
@@ -107,8 +109,11 @@ func harvest(boxToHarvest) -> void:
 
 func hurt(DAMAGE, Vector3):
 	#print("PLAYER GOT HURT", DAMAGE)
-	player_hurt.play()
-	Globals.playerHp -= 1
+	if canBeHurt:
+		canBeHurt = false
+		damage_cooldown.start()
+		player_hurt.play()
+		Globals.playerHp -= 1
 
 func die():
 	animation_player.play("DIE")
@@ -129,7 +134,7 @@ func _on_event_hitbox_area_entered(area):
 	if area.is_in_group("HARVESTBOX"):
 		parentNode.toggleDepositTooltip()
 		canDeposit = true
-	if area.is_in_group("CROPSOIL"):
+	if area.is_in_group("CROPSOIL") and area.get_parent().canBeHarvested == true:
 		canHarvest = true
 		boxToHarvest = area.get_parent()
 		parentNode.harvestTooltipEnabled()
@@ -139,7 +144,7 @@ func _on_event_hitbox_area_exited(area):
 	if area.is_in_group("HARVESTBOX"):
 		parentNode.toggleDepositTooltip()
 		canDeposit = false
-	if area.is_in_group("CROPSOIL"):
+	if area.is_in_group("CROPSOIL") and area.get_parent().canBeHarvested == true:
 		canHarvest = false
 		harvestTimer.stop()
 		boxToHarvest = area.get_parent()
@@ -167,3 +172,7 @@ func _on_spray_hit_box_body_entered(body):
 
 func _on_spray_hit_box_body_exited(body):
 	pass # Replace with function body.
+
+
+func _on_damage_cooldown_timeout():
+	canBeHurt = true

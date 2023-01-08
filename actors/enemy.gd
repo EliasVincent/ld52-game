@@ -77,9 +77,12 @@ func process_state_idle(delta):
 	if playerInAreaAndLOS:
 		set_state_chase()
 func process_state_chase(delta):
-	if isInArea and can_attack:
-		if playerBody != null:
-			set_state_attack()
+	# removing this seems to have
+	# fixed the infinite attack issue
+	
+	#if isInArea and can_attack:
+	#	if playerBody != null:
+	#		set_state_attack()
 	
 	nav.set_target_location(player.position) # das stimmt
 	var target = nav.get_final_location()
@@ -154,7 +157,7 @@ func _on_attack_timer_timeout():
 
 func _on_s_damage_area_body_entered(body):
 	isInArea = true
-	if body.is_in_group("PLAYER"):
+	if body.is_in_group("PLAYER") and isInArea:
 		playerBody = body
 		if can_attack:
 			print("set state to attack")
