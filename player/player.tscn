@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c3yabqicq140k"]
+[gd_scene load_steps=18 format=3 uid="uid://c3yabqicq140k"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_7qt43"]
 [ext_resource type="AudioStream" uid="uid://bc607o8ubcs8w" path="res://assets/sfx/spray1.wav" id="2_moqj4"]
@@ -53,6 +53,28 @@ color_initial_ramp = SubResource("GradientTexture1D_jedii")
 
 [sub_resource type="SphereMesh" id="SphereMesh_ofmph"]
 
+[sub_resource type="Animation" id="Animation_ssmoc"]
+resource_name = "DIE"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"goGameOver"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_04xan"]
+_data = {
+"DIE": SubResource("Animation_ssmoc")
+}
+
 [node name="Player" type="CharacterBody3D" groups=["PLAYER"]]
 script = ExtResource("1_7qt43")
 
@@ -104,6 +126,11 @@ one_shot = true
 [node name="SprayCooldown" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_04xan")
+}
 
 [node name="SFX" type="Node3D" parent="."]
 

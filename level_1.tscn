@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dh2amoaopwvia"]
+[gd_scene load_steps=27 format=3 uid="uid://dh2amoaopwvia"]
 
 [ext_resource type="Script" path="res://levels/level_1.gd" id="1_gln08"]
 [ext_resource type="PackedScene" uid="uid://c3yabqicq140k" path="res://player/player.tscn" id="1_wtv3g"]
@@ -8,6 +8,17 @@
 [ext_resource type="PackedScene" uid="uid://bw0jwgfd4dcxi" path="res://actors/enemy_1.tscn" id="4_05sir"]
 [ext_resource type="PackedScene" uid="uid://d4cqt8aebdgp6" path="res://actors/ammo_dispenser.tscn" id="5_xpwkd"]
 [ext_resource type="Texture2D" uid="uid://cangxfx8851a0" path="res://assets/skybox/skybox3.png" id="6_80xfk"]
+[ext_resource type="Script" path="res://ui/HealthBar.gd" id="9_3nu7x"]
+[ext_resource type="Texture2D" uid="uid://b8k58gjx3fdeo" path="res://assets/sprites/bar1/0.png" id="10_g3ibk"]
+[ext_resource type="Texture2D" uid="uid://wscdfryf0pgh" path="res://assets/sprites/bar1/1.png" id="11_lspsh"]
+[ext_resource type="Texture2D" uid="uid://buupma8u7fj1n" path="res://assets/sprites/bar1/2.png" id="12_0bky0"]
+[ext_resource type="Texture2D" uid="uid://mlx50efvcit8" path="res://assets/sprites/bar1/3.png" id="13_mnwpj"]
+[ext_resource type="Texture2D" uid="uid://7g3mjnvh0mk4" path="res://assets/sprites/bar1/4.png" id="14_2jntp"]
+[ext_resource type="Texture2D" uid="uid://bwqj4n16lvhy0" path="res://assets/sprites/bar1/5.png" id="15_xlny6"]
+[ext_resource type="Texture2D" uid="uid://dvkrfa888go8y" path="res://assets/sprites/bar1/6.png" id="16_o27b1"]
+[ext_resource type="Texture2D" uid="uid://c7ygd0ht2g2ct" path="res://assets/sprites/bar1/7.png" id="17_31ul3"]
+[ext_resource type="Texture2D" uid="uid://dpax85c3k0bsr" path="res://assets/sprites/bar1/8.png" id="18_bvjxe"]
+[ext_resource type="Texture2D" uid="uid://dae457xa3nibl" path="res://assets/sprites/bar1/9.png" id="19_hxdkm"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_6l0bp"]
 vertices = PackedVector3Array(-43.25, 0.3804, -99.5, -49.5, 0.3804, -99.5, -49.5, 0.3804, -88, -37, 0.3804, -99.5, -43.25, 0.3804, -99.5, -49.5, 0.3804, -88, -30.75, 0.3804, -99.5, -37, 0.3804, -99.5, -49.5, 0.3804, -88, -24.25, 0.3804, -99.5, -30.75, 0.3804, -99.5, -49.5, 0.3804, -88, -18, 0.3804, -99.5, -24.25, 0.3804, -99.5, -49.5, 0.3804, -88, -18, 0.3804, -99.5, -49.5, 0.3804, -88, -49.5, 0.3804, -76.25, -11.5, 0.3804, -99.5, -49.5, 0.3804, -41.25, -49.5, 0.3804, -29.5, 1.25, 0.3804, -7, -49.5, 0.3804, -6, -1, 0.3804, -6, -0.75, 0.3804, -7, -49.5, 0.3804, -17.75, 1.25, 0.3804, -99.5, -49.5, 0.3804, -64.5, -49.5, 0.3804, -52.75, 1.25, 0.3804, -7, -5.25, 0.3804, -99.5, -11.5, 0.3804, -99.5, -49.5, 0.3804, -76.25, -49.5, 0.3804, -17.75, -0.75, 0.3804, -7, 1.25, 0.3804, -7, -49.5, 0.3804, -29.5, -49.5, 0.3804, -52.75, -49.5, 0.3804, -41.25, 1.25, 0.3804, -7, 1.25, 0.3804, -99.5, -5.25, 0.3804, -99.5, -49.5, 0.3804, -76.25, -49.5, 0.3804, -64.5, 7, 0.3804, -0.5, 7, 0.3804, 0, 9, 0.3804, 0, 9, 0.3804, -0.5, 49.5, 0.3804, -43.75, 49.5, 0.3804, -49.75, 25.25, 0.3804, -99.5, 13.25, 0.3804, -99.5, 5, 0.3804, -5, 5.25, 0.3804, -0.5, 7, 0.3804, -0.5, 5, 0.3804, -5, 7, 0.3804, -0.5, 9, 0.3804, -0.5, 5, 0.3804, -5, 9, 0.3804, -0.5, 11, 0.3804, -0.5, 49.5, 0.3804, -25, 49.5, 0.3804, -31.25, 5, 0.3804, -7, 49.5, 0.3804, -93.5, 49.5, 0.3804, -99.5, 43.25, 0.3804, -99.5, 1.25, 0.3804, -7, 5, 0.3804, -7, 49.5, 0.3804, -37.5, 49.5, 0.3804, -43.75, 13.25, 0.3804, -99.5, 1.25, 0.3804, -99.5, 49.5, 0.3804, -93.5, 43.25, 0.3804, -99.5, 37.25, 0.3804, -99.5, 49.5, 0.3804, -87.25, 5, 0.3804, -7, 49.5, 0.3804, -31.25, 49.5, 0.3804, -37.5, 49.5, 0.3804, -81, 49.5, 0.3804, -87.25, 37.25, 0.3804, -99.5, 49.5, 0.3804, -74.75, 49.5, 0.3804, -81, 37.25, 0.3804, -99.5, 49.5, 0.3804, -68.5, 49.5, 0.3804, -74.75, 37.25, 0.3804, -99.5, 11, 0.3804, -0.5, 11, 0.3804, 0, 49.5, 0.3804, 0, 49.5, 0.3804, -6.25, 49.5, 0.3804, -49.75, 49.5, 0.3804, -56, 25.25, 0.3804, -99.5, 49.5, 0.3804, -62.25, 49.5, 0.3804, -68.5, 37.25, 0.3804, -99.5, 11, 0.3804, -0.5, 49.5, 0.3804, -6.25, 49.5, 0.3804, -12.5, 11, 0.3804, -0.5, 49.5, 0.3804, -12.5, 49.5, 0.3804, -18.75, 49.5, 0.3804, -62.25, 37.25, 0.3804, -99.5, 25.25, 0.3804, -99.5, 49.5, 0.3804, -56, 11, 0.3804, -0.5, 49.5, 0.3804, -18.75, 49.5, 0.3804, -25, -3, 0.3804, 3.25, -1.75, 0.3804, 3.25, -1, 0.3804, -5.25, -3, 0.3804, 3.25, -1, 0.3804, -5.25, -1, 0.3804, -6, -49.5, 0.3804, -6, -49.5, 0.3804, 4.25, -3.25, 0.3804, 4.25, 7, 0.3804, 3.5, 7, 0.3804, 4, 9, 0.3804, 4, 9, 0.3804, 3.5, 5, 0.3804, 3.5, 7, 0.3804, 3.5, 7, 0.3804, 0.5, 5, 0.3804, 0.5, 9, 0.3804, 0.5, 9, 0.3804, 0, 7, 0.3804, 0, 7, 0.3804, 0.5, -1.75, 0.3804, 3.25, -0.75, 0.3804, -4.75, -1, 0.3804, -5.25, -0.75, 0.3804, 4.75, -1.25, 0.3804, 5, -0.75, 0.3804, 7, 0.5, 0.3804, 6.75, 1.25, 0.3804, 7.75, 5.25, 0.3804, 4.5, 5, 0.3804, 3.5, 9, 0.3804, 3.5, 10, 0.6304, 3.5, 10, 0.6304, 0.5, 9, 0.3804, 0.5, 5, 0.3804, 0.5, 5.25, 0.3804, -0.5, 5, 0.3804, -5, -0.75, 0.3804, -4.75, -1.75, 0.3804, 3.25, -0.75, 0.3804, 3.5, -0.75, 0.3804, 3.5, -0.75, 0.3804, 4.75, 0.5, 0.3804, 6.75, 1.25, 0.3804, 7.75, 5, 0.3804, 3.5, 5, 0.3804, 0.5, 7, 0.3804, 3.5, 9, 0.3804, 3.5, 9, 0.3804, 0.5, 7, 0.3804, 0.5, 10, 0.6304, 0.5, 10, 0.6304, 3.5, 11, 0.3804, 3.5, 11, 0.3804, 0.5, 11, 0.3804, 3.5, 49.5, 0.3804, 4, 49.5, 0.3804, 0, 11, 0.3804, 0.5, 11, 0.3804, 3.5, 11, 0.3804, 4, 49.5, 0.3804, 4, 49.5, 0.3804, 0, 11, 0.3804, 0, 11, 0.3804, 0.5, 9, 0.3804, 4.5, 9, 0.3804, 4, 7, 0.3804, 4, 7, 0.3804, 4.5, 49.5, 0.3804, 27.75, 49.5, 0.3804, 15.75, 11, 0.3804, 4.5, 5.25, 0.3804, 4.5, 1.25, 0.3804, 7.75, 1.25, 0.3804, 8.5, 7, 0.3804, 4.5, 0, 0.3804, 99.5, 49.5, 0.3804, 63.5, 49.5, 0.3804, 51.75, 0, 0.3804, 9.25, 9, 0.3804, 4.5, 7, 0.3804, 4.5, 1.25, 0.3804, 8.5, 9, 0.3804, 4.5, 1.25, 0.3804, 8.5, 0, 0.3804, 9.25, 49.5, 0.3804, 51.75, 49.5, 0.3804, 39.75, 11, 0.3804, 4.5, 49.5, 0.3804, 39.75, 49.5, 0.3804, 27.75, 11, 0.3804, 4.5, 43.25, 0.3804, 99.5, 49.5, 0.3804, 99.5, 49.5, 0.3804, 87.5, 37, 0.3804, 99.5, 43.25, 0.3804, 99.5, 49.5, 0.3804, 87.5, 30.75, 0.3804, 99.5, 37, 0.3804, 99.5, 49.5, 0.3804, 87.5, 24.75, 0.3804, 99.5, 30.75, 0.3804, 99.5, 49.5, 0.3804, 87.5, 18.5, 0.3804, 99.5, 24.75, 0.3804, 99.5, 49.5, 0.3804, 87.5, 49.5, 0.3804, 4, 11, 0.3804, 4, 11, 0.3804, 4.5, 49.5, 0.3804, 15.75, 12.25, 0.3804, 99.5, 18.5, 0.3804, 99.5, 49.5, 0.3804, 87.5, 0, 0.3804, 99.5, 6, 0.3804, 99.5, 49.5, 0.3804, 75.5, 49.5, 0.3804, 63.5, 12.25, 0.3804, 99.5, 49.5, 0.3804, 87.5, 49.5, 0.3804, 75.5, 6, 0.3804, 99.5, -0.75, 0.3804, 7, -1.25, 0.3804, 5, -3, 0.3804, 5, -1.25, 0.3804, 8.5, -0.75, 0.3804, 7, -3, 0.3804, 5, -49.5, 0.3804, 4.25, -49.5, 0.3804, 16, -49.5, 0.3804, 87.5, -49.5, 0.3804, 99.5, -43.5, 0.3804, 99.5, -49.5, 0.3804, 87.5, -43.5, 0.3804, 99.5, -37.25, 0.3804, 99.5, -49.5, 0.3804, 87.5, -37.25, 0.3804, 99.5, -31, 0.3804, 99.5, -49.5, 0.3804, 87.5, -31, 0.3804, 99.5, -24.75, 0.3804, 99.5, -49.5, 0.3804, 87.5, -24.75, 0.3804, 99.5, -18.75, 0.3804, 99.5, -49.5, 0.3804, 87.5, -18.75, 0.3804, 99.5, -12.5, 0.3804, 99.5, -49.5, 0.3804, 75.5, -49.5, 0.3804, 87.5, -12.5, 0.3804, 99.5, -6.25, 0.3804, 99.5, -3, 0.3804, 5, -3.25, 0.3804, 4.25, -49.5, 0.3804, 4.25, -49.5, 0.3804, 75.5, -6.25, 0.3804, 99.5, 0, 0.3804, 99.5, -49.5, 0.3804, 63.5, 0, 0.3804, 99.5, 0, 0.3804, 9.25, -49.5, 0.3804, 51.75, -49.5, 0.3804, 63.5, 0, 0.3804, 9.25, -49.5, 0.3804, 28, -49.5, 0.3804, 39.75, 0, 0.3804, 9.25, -1.25, 0.3804, 8.5, -49.5, 0.3804, 16, -49.5, 0.3804, 28, 0, 0.3804, 9.25, -49.5, 0.3804, 39.75, -49.5, 0.3804, 51.75)
@@ -120,6 +131,11 @@ transform = Transform3D(-5.96046e-08, 0.34056, -0.940223, -5.16702e-10, 0.940223
 light_color = Color(0.87451, 0.54902, 0.223529, 1)
 shadow_enabled = true
 
+[node name="LevelCountdown" type="Timer" parent="."]
+wait_time = 180.0
+one_shot = true
+autostart = true
+
 [node name="Tooltips" type="Control" parent="."]
 clip_contents = true
 custom_minimum_size = Vector2(320, 240)
@@ -212,9 +228,96 @@ offset_top = 15.0
 offset_right = 125.0
 offset_bottom = 55.0
 
-[node name="LevelCountdown" type="Timer" parent="."]
-wait_time = 180.0
-one_shot = true
-autostart = true
+[node name="HealthBar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 321.0
+offset_bottom = 239.0
+script = ExtResource("9_3nu7x")
+
+[node name="Container" type="Control" parent="HealthBar"]
+anchors_preset = 0
+offset_right = 319.0
+offset_bottom = 239.0
+
+[node name="1" type="Sprite2D" parent="HealthBar/Container"]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(33, 25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_lspsh")
+
+[node name="2" type="Sprite2D" parent="HealthBar/Container"]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(33, 25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_0bky0")
+
+[node name="3" type="Sprite2D" parent="HealthBar/Container"]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(33, 25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_mnwpj")
+
+[node name="4" type="Sprite2D" parent="HealthBar/Container"]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(33, 25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_2jntp")
+
+[node name="5" type="Sprite2D" parent="HealthBar/Container"]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(33, 25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_xlny6")
+
+[node name="6" type="Sprite2D" parent="HealthBar/Container"]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(33, 25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_o27b1")
+
+[node name="7" type="Sprite2D" parent="HealthBar/Container"]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(33, 25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_31ul3")
+
+[node name="8" type="Sprite2D" parent="HealthBar/Container"]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(33, 25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("18_bvjxe")
+
+[node name="9" type="Sprite2D" parent="HealthBar/Container"]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(33, 25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("19_hxdkm")
+
+[node name="0" type="Sprite2D" parent="HealthBar/Container"]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(33, 25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_g3ibk")
 
 [connection signal="timeout" from="LevelCountdown" to="." method="_on_level_countdown_timeout"]

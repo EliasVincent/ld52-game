@@ -34,7 +34,11 @@ func harvestingDisabled():
 	harvesting.visible = false
 
 func _ready():
-	pass # Replace with function body.
+	# initialize vars
+	Globals.totalCrops = 0
+	Globals.cropsHeld = 0
+	Globals.sprayAmmo = 5
+	Globals.playerHp = 9
 
 func _process(delta):
 	cropsSaved.text = str("Crops saved: " , Globals.totalCrops)

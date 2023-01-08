@@ -13,6 +13,7 @@ extends CharacterBody3D
 @onready var spray_time = $SprayTime
 @onready var spray_cooldown = $SprayCooldown
 @onready var spray_1_sound = %Spray1Sound
+@onready var animation_player = $AnimationPlayer
 
 
 
@@ -96,6 +97,13 @@ func harvest(boxToHarvest) -> void:
 
 func hurt(DAMAGE, Vector3):
 	print("PLAYER GOT HURT", DAMAGE)
+	Globals.playerHp -= 1
+
+func die():
+	animation_player.play("DIE")
+
+func goGameOver():
+	print("YOU ARE DEAD")
 
 func spray():
 	print("spraying")
