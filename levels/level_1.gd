@@ -7,6 +7,8 @@ extends Node3D
 @onready var harvesting = %Harvesting
 @onready var level_countdown: Timer = $LevelCountdown
 @onready var time_text = %TimeText
+@onready var ammo = %Ammo
+@onready var reload_tooltip = %ReloadTooltip
 
 
 @onready var player: CharacterBody3D = $Player
@@ -51,9 +53,15 @@ func _process(delta):
 	cropsSaved.text = str("Crops saved: " , Globals.totalCrops)
 	cropsHeld.text = str("Crops held: " , Globals.cropsHeld)
 	time_text.text = str(snapped(level_countdown.time_left, 1))
+	ammo.text = str("Ammo: ", Globals.sprayAmmo)
 	
 	if Globals.totalCrops == Globals.cropsToCollect:
 		get_tree().change_scene_to_file("res://ui/win_screen.tscn")
+	
+	if Globals.sprayAmmo <= 0:
+		reload_tooltip.visible = true
+	else:
+		reload_tooltip.visible = false
 
 
 func _on_level_countdown_timeout():
