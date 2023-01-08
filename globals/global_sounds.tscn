@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d6s832steopf"]
+
+[ext_resource type="Script" path="res://globals/global_sounds.gd" id="1_1vw4h"]
+[ext_resource type="AudioStream" uid="uid://doop7m4d7x01l" path="res://assets/sfx/player-die-1.wav" id="2_jwkq2"]
+
+[node name="GlobalSounds" type="Node"]
+script = ExtResource("1_1vw4h")
+
+[node name="PlayerDie" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jwkq2")
+volume_db = -9.505

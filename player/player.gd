@@ -14,6 +14,7 @@ extends CharacterBody3D
 @onready var spray_cooldown = $SprayCooldown
 @onready var spray_1_sound = %Spray1Sound
 @onready var animation_player = $AnimationPlayer
+@onready var player_hurt = %PlayerHurt
 
 
 
@@ -62,6 +63,9 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
+func _process(delta):
+	if Globals.playerHp <= 0:
+		die()
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -96,7 +100,8 @@ func harvest(boxToHarvest) -> void:
 	Globals.cropsHeld += 1
 
 func hurt(DAMAGE, Vector3):
-	print("PLAYER GOT HURT", DAMAGE)
+	#print("PLAYER GOT HURT", DAMAGE)
+	player_hurt.play()
 	Globals.playerHp -= 1
 
 func die():
@@ -104,6 +109,8 @@ func die():
 
 func goGameOver():
 	print("YOU ARE DEAD")
+	GlobalSounds.player_die.play()
+	get_tree().change_scene_to_file("res://ui/game_over.tscn")
 
 func spray():
 	print("spraying")

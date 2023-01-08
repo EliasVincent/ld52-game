@@ -145,6 +145,7 @@ unique_name_in_owner = true
 stream = ExtResource("2_moqj4")
 
 [node name="PlayerHurt" type="AudioStreamPlayer" parent="SFX"]
+unique_name_in_owner = true
 stream = ExtResource("4_md8ia")
 volume_db = -6.5
 

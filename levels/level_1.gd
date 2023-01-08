@@ -11,6 +11,7 @@ extends Node3D
 @onready var reload_tooltip = %ReloadTooltip
 
 
+
 @onready var player: CharacterBody3D = $Player
 
 var cropNodes = []

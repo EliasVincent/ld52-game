@@ -20,7 +20,6 @@ func spawnEnemy():
 	get_parent().add_child(enemy)
 	enemy.player = get_tree().get_nodes_in_group("PLAYER")[0]
 	enemy.nav = get_parent()
-	nav.upda
 	enemy.global_position = self.global_position
 
 func _on_timer_timeout():
