@@ -46,6 +46,10 @@ sky_material = SubResource("PanoramaSkyMaterial_yia21")
 [sub_resource type="Environment" id="Environment_kgn7f"]
 background_mode = 2
 sky = SubResource("Sky_wufsm")
+fog_enabled = true
+fog_light_color = Color(0.72549, 0.490196, 0.27451, 1)
+fog_density = 0.0394
+fog_sky_affect = 0.4
 
 [node name="Level1" type="Node3D" groups=["LEVEL"]]
 script = ExtResource("1_gln08")
@@ -148,12 +152,14 @@ offset_bottom = 239.0
 [node name="DepositTooltip" type="Panel" parent="Tooltips"]
 unique_name_in_owner = true
 visible = false
+layout_mode = 0
 offset_left = 38.0
 offset_top = 179.0
 offset_right = 279.655
 offset_bottom = 224.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tooltips/DepositTooltip"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 10.0
 offset_right = 435.0
@@ -163,12 +169,14 @@ text = "PRESS E TO DEPOSIT CROPS"
 [node name="HarvestTooltip" type="Panel" parent="Tooltips"]
 unique_name_in_owner = true
 visible = false
+layout_mode = 0
 offset_left = 38.0
 offset_top = 179.0
 offset_right = 279.655
 offset_bottom = 224.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tooltips/HarvestTooltip"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 10.0
 offset_right = 435.0
@@ -178,12 +186,14 @@ text = "PRESS E TO HARVEST CROP"
 [node name="Harvesting" type="Panel" parent="Tooltips"]
 unique_name_in_owner = true
 visible = false
+layout_mode = 0
 offset_left = 38.0
 offset_top = 178.0
 offset_right = 279.655
 offset_bottom = 223.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tooltips/Harvesting"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 10.0
 offset_right = 435.0
@@ -199,6 +209,7 @@ offset_bottom = 40.0
 
 [node name="CropsSaved" type="RichTextLabel" parent="HUD"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 184.0
 offset_top = 1.0
 offset_right = 338.0
@@ -208,6 +219,7 @@ text = "Crops saved: "
 
 [node name="CropsHeld" type="RichTextLabel" parent="HUD"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 184.0
 offset_top = 15.0
 offset_right = 325.0
@@ -217,6 +229,7 @@ text = "Crops Held: "
 
 [node name="TimeText" type="RichTextLabel" parent="HUD"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 85.0
 offset_top = 15.0
 offset_right = 125.0
@@ -224,6 +237,7 @@ offset_bottom = 55.0
 
 [node name="Ammo" type="RichTextLabel" parent="HUD"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 184.0
 offset_top = 31.0
 offset_right = 275.0
@@ -235,6 +249,7 @@ scroll_active = false
 
 [node name="ReloadTooltip" type="RichTextLabel" parent="HUD"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 185.0
 offset_top = 47.0
 offset_right = 415.0
@@ -250,7 +265,7 @@ offset_bottom = 239.0
 script = ExtResource("9_3nu7x")
 
 [node name="Container" type="Control" parent="HealthBar"]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 0
 offset_right = 319.0
 offset_bottom = 239.0
