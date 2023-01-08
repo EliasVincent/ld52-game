@@ -129,7 +129,7 @@ _data = {
 "RESET": SubResource("Animation_0ccav")
 }
 
-[node name="cropsoil" type="StaticBody3D"]
+[node name="cropsoil" type="StaticBody3D" groups=["CROPOBJECT"]]
 transform = Transform3D(1, 0, 0, 0, 0.55, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_2d1qs")
 

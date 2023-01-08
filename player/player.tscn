@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://c3yabqicq140k"]
+[gd_scene load_steps=19 format=3 uid="uid://c3yabqicq140k"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_7qt43"]
 [ext_resource type="AudioStream" uid="uid://bc607o8ubcs8w" path="res://assets/sfx/spray1.wav" id="2_moqj4"]
 [ext_resource type="PackedScene" uid="uid://cv85da7f35ssv" path="res://player/spraycan.tscn" id="2_vtiwb"]
+[ext_resource type="AudioStream" uid="uid://bv8dia5urlr1v" path="res://assets/sfx/punch-hurt-1.wav" id="4_md8ia"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3g6gf"]
 radius = 0.4
@@ -137,6 +138,10 @@ libraries = {
 [node name="Spray1Sound" type="AudioStreamPlayer" parent="SFX"]
 unique_name_in_owner = true
 stream = ExtResource("2_moqj4")
+
+[node name="PlayerHurt" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_md8ia")
+volume_db = -6.5
 
 [connection signal="area_entered" from="EventHitbox" to="." method="_on_event_hitbox_area_entered"]
 [connection signal="area_exited" from="EventHitbox" to="." method="_on_event_hitbox_area_exited"]

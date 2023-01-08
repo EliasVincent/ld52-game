@@ -7,6 +7,8 @@ var cropsHeld: int = 0
 var sprayAmmo: int = 5
 var playerHp: int = 9
 
+var cropsToCollect: int = 10
+
 func _input(event):
 	if Input.is_action_just_pressed("fullscreen"):
 		if isFS:
