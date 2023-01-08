@@ -18,6 +18,7 @@ func _on_dispense_area_body_entered(body):
 	if body.is_in_group("PLAYER") and canDispense:
 		canDispense = false
 		Globals.sprayAmmo += AmmoToDispense
+		GlobalSounds.recharge.play()
 		print("RELOADED", Globals.sprayAmmo)
 
 

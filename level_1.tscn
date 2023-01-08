@@ -148,14 +148,12 @@ offset_bottom = 239.0
 [node name="DepositTooltip" type="Panel" parent="Tooltips"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 0
 offset_left = 38.0
 offset_top = 179.0
 offset_right = 279.655
 offset_bottom = 224.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tooltips/DepositTooltip"]
-layout_mode = 0
 offset_left = 16.0
 offset_top = 10.0
 offset_right = 435.0
@@ -165,14 +163,12 @@ text = "PRESS E TO DEPOSIT CROPS"
 [node name="HarvestTooltip" type="Panel" parent="Tooltips"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 0
 offset_left = 38.0
 offset_top = 179.0
 offset_right = 279.655
 offset_bottom = 224.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tooltips/HarvestTooltip"]
-layout_mode = 0
 offset_left = 16.0
 offset_top = 10.0
 offset_right = 435.0
@@ -182,14 +178,12 @@ text = "PRESS E TO HARVEST CROP"
 [node name="Harvesting" type="Panel" parent="Tooltips"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 0
 offset_left = 38.0
 offset_top = 178.0
 offset_right = 279.655
 offset_bottom = 223.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tooltips/Harvesting"]
-layout_mode = 0
 offset_left = 16.0
 offset_top = 10.0
 offset_right = 435.0
@@ -205,25 +199,24 @@ offset_bottom = 40.0
 
 [node name="CropsSaved" type="RichTextLabel" parent="HUD"]
 unique_name_in_owner = true
-layout_mode = 0
 offset_left = 184.0
 offset_top = 1.0
 offset_right = 338.0
 offset_bottom = 59.0
+scale = Vector2(0.7, 0.7)
 text = "Crops saved: "
 
 [node name="CropsHeld" type="RichTextLabel" parent="HUD"]
 unique_name_in_owner = true
-layout_mode = 0
 offset_left = 184.0
-offset_top = 33.0
+offset_top = 15.0
 offset_right = 325.0
-offset_bottom = 77.0
+offset_bottom = 59.0
+scale = Vector2(0.7, 0.7)
 text = "Crops Held: "
 
 [node name="TimeText" type="RichTextLabel" parent="HUD"]
 unique_name_in_owner = true
-layout_mode = 0
 offset_left = 85.0
 offset_top = 15.0
 offset_right = 125.0
@@ -231,15 +224,23 @@ offset_bottom = 55.0
 
 [node name="Ammo" type="RichTextLabel" parent="HUD"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 184.0
+offset_top = 31.0
+offset_right = 275.0
+offset_bottom = 62.0
+scale = Vector2(0.7, 0.7)
+text = "Ammo: "
+fit_content_height = true
+scroll_active = false
 
 [node name="ReloadTooltip" type="RichTextLabel" parent="HUD"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 185.0
+offset_top = 47.0
+offset_right = 415.0
+offset_bottom = 79.0
+scale = Vector2(0.5, 0.5)
+text = "reload at vending machine"
 
 [node name="HealthBar" type="Control" parent="."]
 layout_mode = 3
@@ -249,7 +250,7 @@ offset_bottom = 239.0
 script = ExtResource("9_3nu7x")
 
 [node name="Container" type="Control" parent="HealthBar"]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 0
 offset_right = 319.0
 offset_bottom = 239.0
