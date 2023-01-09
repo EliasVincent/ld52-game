@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnlrcudlvrk62"]
+[gd_scene load_steps=9 format=3 uid="uid://dnlrcudlvrk62"]
 
 [ext_resource type="Texture2D" uid="uid://b7khh0apynfkf" path="res://assets/sprites/mmbg1.png" id="1_wb7ut"]
 [ext_resource type="Script" path="res://ui/main_menu.gd" id="1_xueif"]
 [ext_resource type="Theme" uid="uid://di6yrf76kilwx" path="res://assets/font_theme.tres" id="3_wvafh"]
 [ext_resource type="Texture2D" uid="uid://cyvy7nvdecp7t" path="res://assets/sprites/dark.png" id="4_sy10d"]
+[ext_resource type="AudioStream" uid="uid://ctagm16kusy11" path="res://assets/bgm/menubg1.mp3" id="5_lc1yp"]
 
 [sub_resource type="Animation" id="Animation_fwpe8"]
 resource_name = "IDLE"
@@ -57,7 +58,6 @@ scale = Vector2(0.642334, 0.642334)
 texture = ExtResource("1_wb7ut")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -79,7 +79,6 @@ libraries = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
 offset_left = 97.0
 offset_top = 64.0
 offset_right = 222.0
@@ -87,19 +86,24 @@ offset_bottom = 200.0
 alignment = 1
 
 [node name="Play" type="Button" parent="VBoxContainer"]
-layout_mode = 2
+offset_top = 17.0
+offset_right = 125.0
+offset_bottom = 48.0
 text = "PLAY"
 
 [node name="Button" type="Button" parent="VBoxContainer"]
-layout_mode = 2
+offset_top = 52.0
+offset_right = 125.0
+offset_bottom = 83.0
 text = "ABOUT"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
-layout_mode = 2
+offset_top = 87.0
+offset_right = 125.0
+offset_bottom = 118.0
 text = "QUIT"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
-layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -116,7 +120,6 @@ fit_content_height = true
 scroll_active = false
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="."]
-layout_mode = 0
 offset_left = 224.0
 offset_top = 203.0
 offset_right = 375.0
@@ -171,6 +174,11 @@ Wheat PNG:
 Creative Commons 4.0 BY-NC by \"Royal\"
 https://www.pngall.com/wheat-field-png"
 scroll_following = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lc1yp")
+volume_db = -6.783
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
