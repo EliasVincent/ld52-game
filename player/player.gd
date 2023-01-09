@@ -4,7 +4,7 @@ extends CharacterBody3D
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
 @export var MOUSE_SENSITIVITY = 0.5
-@export var RIGHT_STICK_SENSITIVITY = 1.0
+@export var RIGHT_STICK_SENSITIVITY = 2.0
 
 @onready var camera = $Camera3D
 @onready var parentNode = get_tree().get_nodes_in_group("LEVEL")[0]
@@ -62,9 +62,9 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
 	# right analog stick movement
-	#var rsV = Input.get_vector("right_stick_left", "right_stick_right", "right_stick_up", "right_stick_down")
-	#rotation_degrees.y -= RIGHT_STICK_SENSITIVITY * rsV[0]
-	#camera.rotation_degrees.x -= RIGHT_STICK_SENSITIVITY * rsV[1]
+	var rsV = Input.get_vector("look_left", "look_right", "look_up", "look_down")
+	rotation_degrees.y -= RIGHT_STICK_SENSITIVITY * rsV[0]
+	camera.rotation_degrees.x -= RIGHT_STICK_SENSITIVITY * rsV[1]
 	
 	move_and_slide()
 

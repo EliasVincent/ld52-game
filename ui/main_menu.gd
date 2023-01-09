@@ -1,8 +1,11 @@
 extends Control
 @onready var accept_dialog = $AcceptDialog
+@onready var play = $VBoxContainer/Play
+
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	play.grab_focus()
 
 func _process(delta):
 	pass
