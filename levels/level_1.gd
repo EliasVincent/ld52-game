@@ -40,7 +40,7 @@ func _ready():
 	# initialize vars
 	Globals.totalCrops = 0
 	Globals.cropsHeld = 0
-	Globals.sprayAmmo = 5
+	Globals.sprayAmmo = 4
 	Globals.playerHp = 9
 	
 	var allCrops = 0

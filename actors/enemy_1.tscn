@@ -12,7 +12,7 @@ height = 1.8028
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_druyv"]
 height = 1.4789
-radius = 50.0
+radius = 40.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ovpd8"]
 transparency = 1

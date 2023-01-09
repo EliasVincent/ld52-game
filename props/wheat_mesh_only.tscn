@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnuqwfe6t4is6"]
+
+[ext_resource type="Texture2D" uid="uid://cc8rtcst75mol" path="res://assets/textures/wheat3.png" id="1_x6utf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rc1ql"]
+transparency = 2
+alpha_scissor_threshold = 0.693
+alpha_antialiasing_mode = 2
+alpha_antialiasing_edge = 0.3
+albedo_texture = ExtResource("1_x6utf")
+
+[sub_resource type="QuadMesh" id="QuadMesh_somn7"]
+material = SubResource("StandardMaterial3D_rc1ql")
+size = Vector2(4, 1)
+
+[node name="WheatMeshOnly" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_somn7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.0171801)
+mesh = SubResource("QuadMesh_somn7")

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://btcnouom8e5on"]
+
+[ext_resource type="Texture2D" uid="uid://cc8rtcst75mol" path="res://assets/textures/wheat3.png" id="1_0npgu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57iwm"]
+transparency = 2
+alpha_scissor_threshold = 0.693
+alpha_antialiasing_mode = 2
+alpha_antialiasing_edge = 0.3
+albedo_texture = ExtResource("1_0npgu")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ahr2o"]
+material = SubResource("StandardMaterial3D_57iwm")
+size = Vector2(4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g7e31"]
+size = Vector3(4, 1, 0.229)
+
+[node name="Wheat" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_ahr2o")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.0171801)
+mesh = SubResource("QuadMesh_ahr2o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_g7e31")
