@@ -13,6 +13,7 @@ config_version=5
 config/name="ld52"
 run/main_scene="res://level_1.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
+boot_splash/image="res://assets/sprites/dark.png"
 config/icon="res://icon.svg"
 
 [autoload]
@@ -24,6 +25,7 @@ GlobalSounds="*res://globals/global_sounds.tscn"
 
 window/size/viewport_width=320
 window/size/viewport_height=240
+window/size/mode=2
 window/stretch/mode="viewport"
 
 [input]
