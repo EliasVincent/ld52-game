@@ -11,6 +11,7 @@ size = Vector3(0.919901, 1.6627, 1.45586)
 
 [node name="AmmoDispenser" type="StaticBody3D"]
 script = ExtResource("1_684q7")
+AmmoToDispense = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.0536107, 0, 0, 0, -0.123567, 0, 0, 0, 0.142806, 0.256275, 0.276079, -0.364761)
@@ -28,6 +29,11 @@ shape = SubResource("BoxShape3D_csm3b")
 
 [node name="vendingmachine" parent="." instance=ExtResource("2_2y5yx")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.0818863, 0, -0.996642, 0, 1, 0, 0.996642, 0, -0.0818863, 0, 0.935399, 0)
+light_color = Color(0.458824, 0.294118, 0.156863, 1)
+light_energy = 2.287
 
 [connection signal="timeout" from="DispenserCooldown" to="." method="_on_dispenser_cooldown_timeout"]
 [connection signal="body_entered" from="DispenseArea" to="." method="_on_dispense_area_body_entered"]
