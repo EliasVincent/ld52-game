@@ -135,9 +135,10 @@ func _on_event_hitbox_area_entered(area):
 		parentNode.toggleDepositTooltip()
 		canDeposit = true
 	if area.is_in_group("CROPSOIL") and area.get_parent().canBeHarvested == true:
-		canHarvest = true
-		boxToHarvest = area.get_parent()
-		parentNode.harvestTooltipEnabled()
+		if Globals.cropsHeld < Globals.maxHeld:
+			canHarvest = true
+			boxToHarvest = area.get_parent()
+			parentNode.harvestTooltipEnabled()
 
 
 func _on_event_hitbox_area_exited(area):

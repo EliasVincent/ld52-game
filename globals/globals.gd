@@ -6,6 +6,7 @@ var totalCrops: int = 0
 var cropsHeld: int = 0
 var sprayAmmo: int = 5
 var playerHp: int = 9
+var maxHeld: int = 6
 
 var cropsToCollect: int = 10
 

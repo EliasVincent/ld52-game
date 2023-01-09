@@ -15,7 +15,7 @@ extends Node3D
 @onready var player: CharacterBody3D = $Player
 
 var cropNodes = []
-# Called when the node enters the scene tree for the first time.
+var numOfAllCrops: int = 0
 
 func toggleDepositTooltip():
 	cropTooltip.visible = !cropTooltip.visible
@@ -48,11 +48,12 @@ func _ready():
 	for i in cropNodes:
 		allCrops += 1
 	Globals.cropsToCollect = allCrops
+	numOfAllCrops = allCrops
 	print(Globals.cropsToCollect)
 
 func _process(delta):
-	cropsSaved.text = str("Crops saved: " , Globals.totalCrops)
-	cropsHeld.text = str("Crops held: " , Globals.cropsHeld)
+	cropsSaved.text = str("Crops saved: " , Globals.totalCrops, "/", numOfAllCrops)
+	cropsHeld.text = str("Crops held: " , Globals.cropsHeld, "/", Globals.maxHeld)
 	time_text.text = str(snapped(level_countdown.time_left, 1))
 	ammo.text = str("Ammo: ", Globals.sprayAmmo)
 	
