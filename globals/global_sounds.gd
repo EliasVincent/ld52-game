@@ -2,6 +2,7 @@ extends Node
 
 @onready var player_die = $PlayerDie
 @onready var recharge = $Recharge
+@onready var enemy_die = $EnemyDie
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

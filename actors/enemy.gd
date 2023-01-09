@@ -146,6 +146,7 @@ func process_state_dead(delta):
 func hurt():
 	#hurt_sound_1.play(0.0)
 	#healthManager.hurt(damage, dir)
+	GlobalSounds.enemy_die.play()
 	animationPlayer.play("DIE")
 
 

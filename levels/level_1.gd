@@ -65,6 +65,12 @@ func _process(delta):
 	else:
 		reload_tooltip.visible = false
 
+func _input(event):
+	if event is InputEventMouseButton:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+	if Input.is_action_just_pressed("escape"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_level_countdown_timeout():
 	get_tree().change_scene_to_file("res://ui/game_over.tscn")

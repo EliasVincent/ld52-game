@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d6s832steopf"]
+[gd_scene load_steps=5 format=3 uid="uid://d6s832steopf"]
 
 [ext_resource type="Script" path="res://globals/global_sounds.gd" id="1_1vw4h"]
 [ext_resource type="AudioStream" uid="uid://doop7m4d7x01l" path="res://assets/sfx/player-die-1.wav" id="2_jwkq2"]
 [ext_resource type="AudioStream" uid="uid://bnalwskkmhc1o" path="res://assets/sfx/refreshed.wav" id="3_geutw"]
+[ext_resource type="AudioStream" uid="uid://c2xtfx6mpfsj7" path="res://assets/sfx/enemy-die-1.wav" id="4_5kmln"]
 
 [node name="GlobalSounds" type="Node"]
 script = ExtResource("1_1vw4h")
@@ -14,3 +15,7 @@ volume_db = -9.505
 [node name="Recharge" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_geutw")
 volume_db = -4.198
+
+[node name="EnemyDie" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5kmln")
+volume_db = -6.71

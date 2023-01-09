@@ -149,6 +149,15 @@ transform = Transform3D(1.75, 0, 0, 0, 2.5, 0, 0, 0, 1.75, 0, 1.2, 0)
 [node name="WheatMeshOnly2" parent="Navigation/NavigationRegion3D/Environment/Wheat/WheatCross9" instance=ExtResource("3_qppcn")]
 transform = Transform3D(1.23744, 0, -1.23744, 0, 2.5, 0, 1.23744, 0, 1.23744, 0, 1.2, 0)
 
+[node name="WheatCross10" type="Node3D" parent="Navigation/NavigationRegion3D/Environment/Wheat"]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 3, 0, -25)
+
+[node name="WheatMeshOnly" parent="Navigation/NavigationRegion3D/Environment/Wheat/WheatCross10" instance=ExtResource("3_qppcn")]
+transform = Transform3D(1.75, 0, 0, 0, 2.5, 0, 0, 0, 1.75, 0, 1.2, 0)
+
+[node name="WheatMeshOnly2" parent="Navigation/NavigationRegion3D/Environment/Wheat/WheatCross10" instance=ExtResource("3_qppcn")]
+transform = Transform3D(1.23744, 0, -1.23744, 0, 2.5, 0, 1.23744, 0, 1.23744, 0, 1.2, 0)
+
 [node name="WheatBorder" type="Node3D" parent="Navigation/NavigationRegion3D/Environment"]
 
 [node name="Wheat" parent="Navigation/NavigationRegion3D/Environment/WheatBorder" instance=ExtResource("3_kx42j")]
@@ -387,6 +396,9 @@ transform = Transform3D(1, 0, 0, 0, 0.55, 0, 0, 0, 1, 10, 0, 4)
 [node name="cropsoil4" parent="Navigation/NavigationRegion3D/Environment/Props" instance=ExtResource("3_ksn5q")]
 transform = Transform3D(1, 0, 0, 0, 0.55, 0, 0, 0, 1, 6, 0, 4)
 
+[node name="cropsoil16" parent="Navigation/NavigationRegion3D/Environment/Props" instance=ExtResource("3_ksn5q")]
+transform = Transform3D(1, 0, 0, 0, 0.55, 0, 0, 0, 1, -13, 0, 4)
+
 [node name="cropsoil5" parent="Navigation/NavigationRegion3D/Environment/Props" instance=ExtResource("3_ksn5q")]
 transform = Transform3D(1, 0, 0, 0, 0.55, 0, 0, 0, 1, 24, 0, 4)
 
@@ -503,14 +515,12 @@ offset_bottom = 239.0
 [node name="DepositTooltip" type="Panel" parent="Tooltips"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 0
 offset_left = 38.0
 offset_top = 179.0
 offset_right = 279.655
 offset_bottom = 224.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tooltips/DepositTooltip"]
-layout_mode = 0
 offset_left = 16.0
 offset_top = 10.0
 offset_right = 435.0
@@ -520,14 +530,12 @@ text = "PRESS E TO DEPOSIT CROPS"
 [node name="HarvestTooltip" type="Panel" parent="Tooltips"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 0
 offset_left = 38.0
 offset_top = 179.0
 offset_right = 279.655
 offset_bottom = 224.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tooltips/HarvestTooltip"]
-layout_mode = 0
 offset_left = 16.0
 offset_top = 10.0
 offset_right = 435.0
@@ -537,14 +545,12 @@ text = "PRESS E TO HARVEST CROP"
 [node name="Harvesting" type="Panel" parent="Tooltips"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 0
 offset_left = 38.0
 offset_top = 178.0
 offset_right = 279.655
 offset_bottom = 223.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tooltips/Harvesting"]
-layout_mode = 0
 offset_left = 16.0
 offset_top = 10.0
 offset_right = 435.0
@@ -560,7 +566,6 @@ offset_bottom = 40.0
 
 [node name="CropsSaved" type="RichTextLabel" parent="HUD"]
 unique_name_in_owner = true
-layout_mode = 0
 offset_left = 184.0
 offset_top = 1.0
 offset_right = 338.0
@@ -570,7 +575,6 @@ text = "Crops saved: "
 
 [node name="CropsHeld" type="RichTextLabel" parent="HUD"]
 unique_name_in_owner = true
-layout_mode = 0
 offset_left = 184.0
 offset_top = 15.0
 offset_right = 325.0
@@ -580,7 +584,6 @@ text = "Crops Held: "
 
 [node name="TimeText" type="RichTextLabel" parent="HUD"]
 unique_name_in_owner = true
-layout_mode = 0
 offset_left = 85.0
 offset_top = 15.0
 offset_right = 125.0
@@ -588,7 +591,6 @@ offset_bottom = 55.0
 
 [node name="Ammo" type="RichTextLabel" parent="HUD"]
 unique_name_in_owner = true
-layout_mode = 0
 offset_left = 184.0
 offset_top = 31.0
 offset_right = 275.0
@@ -600,7 +602,6 @@ scroll_active = false
 
 [node name="ReloadTooltip" type="RichTextLabel" parent="HUD"]
 unique_name_in_owner = true
-layout_mode = 0
 offset_left = 185.0
 offset_top = 47.0
 offset_right = 415.0
@@ -616,7 +617,7 @@ offset_bottom = 239.0
 script = ExtResource("9_3nu7x")
 
 [node name="Container" type="Control" parent="HealthBar"]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 0
 offset_right = 319.0
 offset_bottom = 239.0
