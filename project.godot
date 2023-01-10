@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="ld52"
+config/name="cat-crop-collector"
 run/main_scene="res://ui/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 boot_splash/image="res://assets/sprites/dark.png"
