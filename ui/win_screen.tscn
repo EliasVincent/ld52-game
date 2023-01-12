@@ -20,8 +20,7 @@ texture = ExtResource("1_dq4sw")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 modulate = Color(0.835294, 0.835294, 0.835294, 1)
-layout_mode = 1
-anchors_preset = 5
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -88.0
@@ -36,8 +35,7 @@ scroll_active = false
 
 [node name="w" type="RichTextLabel" parent="."]
 modulate = Color(0.835294, 0.835294, 0.835294, 1)
-layout_mode = 1
-anchors_preset = 5
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -113.0

@@ -58,7 +58,7 @@ scale = Vector2(0.642334, 0.642334)
 texture = ExtResource("1_wb7ut")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-anchors_preset = 5
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -88.0
@@ -79,6 +79,7 @@ libraries = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 97.0
 offset_top = 64.0
 offset_right = 222.0
@@ -86,25 +87,19 @@ offset_bottom = 200.0
 alignment = 1
 
 [node name="Play" type="Button" parent="VBoxContainer"]
-offset_top = 17.0
-offset_right = 125.0
-offset_bottom = 48.0
+layout_mode = 2
 text = "PLAY"
 
 [node name="Button" type="Button" parent="VBoxContainer"]
-offset_top = 52.0
-offset_right = 125.0
-offset_bottom = 83.0
+layout_mode = 2
 text = "ABOUT"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
-offset_top = 87.0
-offset_right = 125.0
-offset_bottom = 118.0
+layout_mode = 2
 text = "QUIT"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
-anchors_preset = 2
+layout_mode = 0
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 7.0
@@ -120,6 +115,7 @@ fit_content_height = true
 scroll_active = false
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 224.0
 offset_top = 203.0
 offset_right = 375.0
