@@ -10,11 +10,11 @@ config_version=5
 
 [application]
 
-config/name="cat-crop-collector"
+config/name="Cat Crop Collector"
 run/main_scene="res://ui/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 boot_splash/image="res://assets/sprites/dark.png"
-config/icon="res://icon.svg"
+config/icon="res://assets/icon2.png"
 
 [autoload]
 

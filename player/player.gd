@@ -69,7 +69,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _process(delta):
-	if Globals.playerHp <= 0:
+	if Globals.playerHp <= 1:
 		die()
 
 func _input(event):
