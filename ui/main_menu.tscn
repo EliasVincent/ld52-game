@@ -111,7 +111,6 @@ scale = Vector2(0.800001, 0.799999)
 bbcode_enabled = true
 text = "
 [center][tornado radius=5 freq=1][rainbow freq=0.1]eliasvsimon.com"
-fit_content_height = true
 scroll_active = false
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="."]
