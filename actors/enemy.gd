@@ -77,22 +77,14 @@ func process_state_idle(delta):
 	if playerInAreaAndLOS:
 		set_state_chase()
 func process_state_chase(delta):
-	# removing this seems to have
-	# fixed the infinite attack issue
-	
-	#if isInArea and can_attack:
-	#	if playerBody != null:
-	#		set_state_attack()
-	
-	nav.set_target_location(player.position) # das stimmt
-	var target = nav.get_final_location()
-	#var v = (target - player.global_position).normalized()
-	#nav.set_velocity(v)
+
+	nav.target_position = player.position
+	var target = nav.get_final_position()
+
 	var goal_pos = target
 	var dir = goal_pos - global_transform.origin
-	#dir.y = 0
+
 	velocity = dir * delta * MOVE_SPEED
-	
 	
 	var angle = atan2(dir.x, dir.z)
 	var angle_diff = angle - rotation.y
@@ -101,7 +93,7 @@ func process_state_chase(delta):
 	if angle_diff < -PI:
 		angle_diff += 2*PI
 	rotation.y += angle_diff * delta * ROTATION_SPEED
-	#self.global_position = target
+
 	move_and_slide()
 func process_state_chase_old(delta):
 	# set attack
